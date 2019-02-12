@@ -14,6 +14,6 @@ Getting Started
     >>> from onion.area import run
     >>> population = 250000
     >>> radius = 3.5
-    >>> run(population, radius)
+    >>> calculate(population, radius)
     {'name': 'population_density', 'value': 6496.12012619981, 'units': 'person/km^2'}
 

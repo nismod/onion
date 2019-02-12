@@ -6,7 +6,6 @@
 
 import argparse
 import sys
-import logging
 from math import pi
 import pandas as pd
 from onion import __version__
@@ -14,8 +13,6 @@ from onion import __version__
 __author__ = "Will Usher"
 __copyright__ = "Will Usher"
 __license__ = "mit"
-
-_logger = logging.getLogger(__name__)
 
 
 def calculate_population_density(population, radius):
@@ -54,7 +51,7 @@ def compute_heating_demand(population, dwellings):
 
 
 
-def calculate_demands(population, radius):
+def calculate(population, radius):
 
     population_density = calculate_population_density(population, radius)
     return {'name': 'population_density',
