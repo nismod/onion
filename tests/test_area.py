@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import pytest
-from onion.area import calculate_demands
+from onion.area import calculate
 
 __author__ = "Will Usher"
 __copyright__ = "Will Usher"
@@ -12,11 +12,13 @@ __license__ = "mit"
 def test_demands():
 
     population = 250000
+    dwellings = 100000
     radius = 5 # km
 
-    actual = calculate_demands(population, radius)
-    expected = {'name': 'population_density',
+    actual = calculate(population, dwellings, radius)
+    expected = {
                 'value': 3183.0988618379065,
-                'units': 'person/km^2'}
+                'units': 'person/km^2'
+                }
 
-    assert actual == expected
+    assert actual['population_density'] == expected
