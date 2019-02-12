@@ -12,9 +12,11 @@ __license__ = "mit"
 def test_demands():
 
     population = 250000
-    radius = 1
+    radius = 5 # km
 
     actual = calculate_demands(population, radius)
-    expected = 10
+    expected = {'name': 'population_density',
+                'value': 3183.0988618379065,
+                'units': 'person/km^2'}
 
     assert actual == expected

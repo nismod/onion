@@ -8,6 +8,7 @@ import argparse
 import sys
 import logging
 from math import pi
+import pandas as pd
 from onion import __version__
 
 __author__ = "Will Usher"
@@ -17,11 +18,23 @@ __license__ = "mit"
 _logger = logging.getLogger(__name__)
 
 
-def calculate_demands(population, radius):
+def calculate_population_density(population, radius):
 
     area = pi * radius**2
-    density = population / area
-    return density
+    population_density = population / area
+    return population_density
+
+
+def dwelling_density(dwellings, radius):
+
+    area = pi * radius**2
+    dwelling_density = dwellings / area
+    return dwelling_density
+
+
+def estimate_floor_area(dwellings, dwelling_density):
+
+    return floor_area
 
 
 def compute_ev_ownership(ev_power):
@@ -30,12 +43,23 @@ def compute_ev_ownership(ev_power):
 
 def compute_ev_power(population):
 
+    
+
     return ev_power_requirements
 
 
 def compute_heating_demand(population, dwellings):
 
     pass
+
+
+
+def calculate_demands(population, radius):
+
+    population_density = calculate_population_density(population, radius)
+    return {'name': 'population_density',
+            'value': population_density,
+            'units': 'person/km^2'}
 
 
 def parse_args(args):
@@ -56,6 +80,11 @@ def parse_args(args):
     parser.add_argument(
         dest="population",
         help="population",
+        type=float,
+        metavar="INT")
+    parser.add_argument(
+        dest="radius",
+        help="radius (in km)",
         type=float,
         metavar="INT")
     return parser.parse_args(args)
@@ -81,7 +110,7 @@ def main(args):
     args = parse_args(args)
     setup_logging(args.loglevel)
 
-    calculate_demands(args.population)
+    calculate_demands(args.population, args.radius)
 
 
 
