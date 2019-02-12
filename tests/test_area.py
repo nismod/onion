@@ -9,7 +9,7 @@ __copyright__ = "Will Usher"
 __license__ = "mit"
 
 
-def test_demands():
+def test_population_density():
 
     population = 250000
     dwellings = 100000

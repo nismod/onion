@@ -2,6 +2,8 @@
 onion
 =====
 
+.. image:: https://travis-ci.com/nismod/onion.svg?branch=master
+    :target: https://travis-ci.com/nismod/onion
 
 Observation of new infrastructure operations and networks
 
@@ -13,7 +15,8 @@ Getting Started
 
     >>> from onion.area import run
     >>> population = 250000
+    >>> dwellings = 100000
     >>> radius = 3.5
-    >>> calculate(population, radius)
+    >>> calculate(population, dwellings, radius)
     {'name': 'population_density', 'value': 6496.12012619981, 'units': 'person/km^2'}
 
