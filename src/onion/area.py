@@ -42,6 +42,12 @@ def estimate_roof_area(dwellings, roof_area):
 
     return total_roof_area
 
+def estimate_solar_pv_potential(total_roof_area):
+
+    KWp_PER_SQ_M = 0.1
+    pv_potential = total_roof_area * KWp_PER_SQ_M
+    return pv_potential
+
 
 def compute_ev_ownership(ev_power):
 
@@ -64,8 +70,10 @@ def calculate(population, dwellings, radius):
 
     population_density = calculate_population_density(population, radius)
     dwelling_density = calculate_dwelling_density(dwellings, radius)
+    
     return {'population_density': {'value': population_density, 'units': 'person/km^2'},
-            'dwelling_density': {'value': dwelling_density, 'units': 'dwelling/hectare'}
+            'dwelling_density': {'value': dwelling_density, 'units': 'dwelling/hectare'},
+            'solar_pv_potential': {'value': pv_potential, 'units': 'kWp'}
             }
 
 
