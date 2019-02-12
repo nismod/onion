@@ -72,7 +72,7 @@ def parse_args(args):
       :obj:`argparse.Namespace`: command line parameters namespace
     """
     parser = argparse.ArgumentParser(
-        description="Just a Fibonnaci demonstration")
+        description="Observation of new infrastructure operations and networks")
     parser.add_argument(
         '--version',
         action='version',
@@ -90,17 +90,6 @@ def parse_args(args):
     return parser.parse_args(args)
 
 
-def setup_logging(loglevel):
-    """Setup basic logging
-
-    Args:
-      loglevel (int): minimum loglevel for emitting messages
-    """
-    logformat = "[%(asctime)s] %(levelname)s:%(name)s:%(message)s"
-    logging.basicConfig(level=loglevel, stream=sys.stdout,
-                        format=logformat, datefmt="%Y-%m-%d %H:%M:%S")
-
-
 def main(args):
     """Main entry point allowing external calls
 
@@ -108,9 +97,7 @@ def main(args):
       args ([str]): command line parameter list
     """
     args = parse_args(args)
-    setup_logging(args.loglevel)
-
-    calculate_demands(args.population, args.radius)
+    print(calculate_demands(args.population, args.radius))
 
 
 
