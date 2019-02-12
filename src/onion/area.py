@@ -6,7 +6,6 @@
 import argparse
 import sys
 from math import pi
-import pandas as pd
 
 __author__ = "Will Usher"
 __copyright__ = "Will Usher"
