@@ -17,21 +17,30 @@ __license__ = "mit"
 
 def calculate_population_density(population, radius):
 
-    area = pi * radius**2
-    population_density = population / area
+    area = pi * radius**2  # sq km
+    population_density = population / area  
     return population_density
 
 
-def dwelling_density(dwellings, radius):
+def calculate_dwelling_density(dwellings, radius):
 
-    area = pi * radius**2
-    dwelling_density = dwellings / area
+    area = pi * radius**2  # sq km
+    area_hectares = area * 100.0
+    dwelling_density = dwellings / area_hectares
     return dwelling_density
 
 
-def estimate_floor_area(dwellings, dwelling_density):
+def estimate_floor_area(dwellings, dwelling_density, floor_area):
 
-    return floor_area
+     total_floor_area = dwellings * floor_area
+
+    return total_floor_area
+
+def estimate_roof_area(dwellings, roof_area):
+
+    total_roof_area = dwellings * roof_area
+
+    return total_roof_area
 
 
 def compute_ev_ownership(ev_power):
@@ -51,12 +60,13 @@ def compute_heating_demand(population, dwellings):
 
 
 
-def calculate(population, radius):
+def calculate(population, dwellings, radius):
 
     population_density = calculate_population_density(population, radius)
-    return {'name': 'population_density',
-            'value': population_density,
-            'units': 'person/km^2'}
+    dwelling_density = calculate_dwelling_density(dwellings, radius)
+    return {'population_density': {'value': population_density, 'units': 'person/km^2'},
+            'dwelling_density': {'value': dwelling_density, 'units': 'dwelling/hectare'}
+            }
 
 
 def parse_args(args):
