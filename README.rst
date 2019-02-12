@@ -20,3 +20,9 @@ Getting Started
     >>> calculate(population, dwellings, radius)
     {'name': 'population_density', 'value': 6496.12012619981, 'units': 'person/km^2'}
 
+
+Alternatively, clone and install the development version of the code
+
+    git clone https://github.com/nismod/onion.git
+    cd onion
+    python setup.py develop
