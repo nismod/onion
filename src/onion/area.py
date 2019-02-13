@@ -7,6 +7,8 @@ import argparse
 import sys
 from math import pi
 
+from .indices import calculate_substation_index
+
 __author__ = "Will Usher"
 __copyright__ = "Will Usher"
 __license__ = "mit"
@@ -15,7 +17,7 @@ __license__ = "mit"
 def calculate_population_density(population, radius):
 
     area = pi * radius**2  # sq km
-    population_density = population / area  
+    population_density = population / area
     return population_density
 
 
@@ -61,22 +63,30 @@ def compute_heating_demand(population, dwellings):
 
 
 
-def calculate(population, dwellings, radius):
+def calculate(population, dwellings, radius_km,
+              centroid, substation_geojson):
+
+    results = {}
 
     av_roof_area = 25  # m^2
     av_floor_area = 55  # m^2
 
-    population_density = calculate_population_density(population, radius)
-    dwelling_density = calculate_dwelling_density(dwellings, radius)
+    population_density = calculate_population_density(population, radius_km)
+    dwelling_density = calculate_dwelling_density(dwellings, radius_km)
     total_roof_area = estimate_roof_area(dwellings, av_roof_area)
     pv_potential = estimate_solar_pv_potential(total_roof_area)
     total_floor_area = estimate_floor_area(dwellings, dwelling_density, av_floor_area)
-
-    return {'population_density': {'value': population_density, 'units': 'person/km^2'},
+    results = {'population_density': {'value': population_density, 'units': 'person/km^2'},
             'dwelling_density': {'value': dwelling_density, 'units': 'dwelling/hectare'},
             'solar_pv_potential': {'value': pv_potential, 'units': 'kWp'},
             'floor_area': {'value': total_floor_area, 'units': 'm^2'}
             }
+
+    if substation_geojson:
+        substation_index = calculate_substation_index(centroid, substation_geojson, radius_km)
+        results['substation_index'] = {'value': substation_index, 'units': ""}
+
+    return results
 
 
 def parse_args(args):
