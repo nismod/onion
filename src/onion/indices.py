@@ -23,7 +23,7 @@ def parse_geojson(geojson, feature_type):
 
 def compute_inverse_distance(centroid, substation, buffer_km):
 
-    dist = geopy.distance.vincenty(centroid, substation).km
+    dist = geopy.distance.geodesic(centroid, substation).km
     inverse_distance = buffer_km - dist
 
     return inverse_distance
