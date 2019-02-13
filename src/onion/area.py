@@ -127,6 +127,8 @@ def calculate(population, dwellings, radius_km,
     pv_potential = estimate_solar_pv_potential(total_roof_area)
     total_floor_area = estimate_floor_area(dwellings, dwelling_density, 
                                            av_floor_area)
+    
+    heat_pump_demand = heat_pumps(dwellings, dwelling_density)
 
     energy_demand = compute_space_heating_demand(dwellings, population, 
                                                  proportion_evs=0.6,
@@ -134,17 +136,18 @@ def calculate(population, dwellings, radius_km,
 
     heat_network_energy = heat_network(energy_demand['total_heat'], radius_km)
     
-    energy_supply_shortfall_elec = energy_demand['total_electricity'] - pv_potential
-    energy_supply_shortfall_heat = energy_demand['total_heat'] - heat_network_energy
-
+    energy_supply_shortfall_elec = energy_demand['total_electricity'] - pv_potential + heat_pump_demand
+    energy_supply_shortfall_heat = energy_demand['total_heat'] - heat_network_energy - 1360
 
 
     results = {
         'population_density': {'value': round(population_density), 'units': 'person/km^2'},
         'dwelling_density': {'value': round(dwelling_density), 'units': 'dwelling/hectare'},
-        'energy_supply_solar_pv_potential': {'value': round(pv_potential, 2), 'units': 'kWh'},
+        'energy_supply_elec_solar_pv': {'value': round(pv_potential, 2), 'units': 'kWh'},
         'energy_supply_heat_network_potential': {'value': round(heat_network_energy, 2), 'units': 'kWh'},
-        'energy_supply_heat_pump_potential': {'value': round(heat_pumps(dwellings, dwelling_density), 2), 'units': 'kWh'},
+        'energy_supply_heat_pump_potential': {'value': round(heat_pump_demand, 2), 'units': 'kWh'},
+        'energy_supply_elec_other': {'value': round(energy_supply_shortfall_elec, 2), 'units': 'kWh'},
+        'energy_supply_heat_other': {'value': round(energy_supply_shortfall_heat, 2), 'units': 'kWh'},
         'energy_demand_space_heat': {'value': round(energy_demand['space_heat'], 2), 'units': 'kWh/year'},
         'energy_demand_hot_water': {'value': round(energy_demand['hot_water'], 2), 'units': 'kWh/year'},
         'energy_demand_electricity': {'value': round(energy_demand['electricity'], 2), 'units': 'kWh/year'},
