@@ -14,6 +14,7 @@ import geopandas as gpd
 def parse_geojson(geojson):
 
     data = gpd.GeoDataFrame.from_features(geojson)
+    data = data[data['type'] == 'substation']
 
     list_of_points = [x.coords[:] for x in data['geometry']]
 
