@@ -38,4 +38,4 @@ def test_substation_index(geojson):
                 'units': ''
                 }
 
-    assert actual['substation_index'] == approx(expected)
+    assert actual['substation_index']['value'] == approx(expected['value'])
