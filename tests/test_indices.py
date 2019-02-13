@@ -1,6 +1,9 @@
 from onion.indices import (compute_inverse_distance, parse_geojson, 
                            calculate_substation_index, calculate_road_index)
 
+from pytest import approx
+
+
 def test_compute_substation_distance():
 
     centroid = (0, 0)
@@ -30,10 +33,10 @@ def test_calculate_substation_index(geojson):
 
     actual = calculate_substation_index(centroid, geojson, buffer_km)
     expected = -17.517934296490335
-    assert actual == expected
+    assert actual == approx(expected)
 
-def test_road_confestion(geojson):
+def test_road_congestion(geojson):
 
     actual = calculate_road_index(geojson)
     expected = 0.7399550355519291
-    assert actual == expected
+    assert actual == approx(expected)

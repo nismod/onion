@@ -49,7 +49,8 @@ def calculate_substation_index(centroid, substation_geojson, buffer_km):
 def calculate_road_index(geojson):
 
     frame = gpd.GeoDataFrame.from_features(geojson)
-    roads = frame[frame['type']=='road']
+    roads = frame[frame['type'] == 'road']
+    
     roads['aggregate_congestion'] = None
 
     for index, road in roads.iterrows():

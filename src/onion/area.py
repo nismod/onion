@@ -20,14 +20,12 @@ def calculate_population_density(population, radius):
     population_density = population / area
     return population_density
 
-
 def calculate_dwelling_density(dwellings, radius):
 
     area = pi * radius**2  # sq km
     area_hectares = area * 100.0
     dwelling_density = dwellings / area_hectares
     return dwelling_density
-
 
 def estimate_floor_area(dwellings, dwelling_density, floor_area):
 
@@ -47,20 +45,46 @@ def estimate_solar_pv_potential(total_roof_area):
     pv_potential = total_roof_area * KWp_PER_SQ_M
     return pv_potential
 
-
-def compute_ev_ownership(ev_power):
-
-    return number_evs
-
-def compute_ev_power(population):
-
-    return ev_power_requirements
+def estimate_pv_generation(total_roof_area):
+    average_daylight_hours = 12
+    pv_load_factor = 0.11
+    capacity = estimate_solar_pv_potential(total_roof_area)
+    return average_daylight_hours * pv_load_factor * capacity
 
 
-def compute_heating_demand(population, dwellings):
+def calc_heat_density(total_heat_demand, radius):
+    area = pi * radius**2  # sq km
+    return total_heat_demand / area
 
-    pass
 
+def heat_network(space_heat, hot_water, radius):
+    total_heat_demand = space_heat + hot_water
+    heat_density = calc_heat_density(total_heat_demand, radius)
+    if heat_density > 50:
+        heat_network_capacity = total_heat_demand
+    else:
+        heat_network_capacity = 0
+
+    return heat_network_capacity
+
+
+def compute_space_heating_demand(dwellings, population, proportion_evs=0.6, scenario='existing'):
+
+    # exiting
+    if scenario == 'existing':
+        heating_demand = dwellings * 8000  # kWh/year
+        hot_water = dwellings * 5000  # kWh/year
+        electricity = dwellings * 3000  # kWh/year
+    # zero carbon
+    elif scenario == 'zero_carbon':
+        heating_demand = dwellings * 1360  # kWh/year
+        hot_water = dwellings * 5000  # kWh/year
+        electricity = dwellings * 2700  # kWh/year    
+
+    return {'space_heat': heating_demand,
+            'hot_water': hot_water,
+            'electricity': electricity,
+            'ev_electricity': dwellings * proportion_evs * 2000}
 
 
 def calculate(population, dwellings, radius_km,
@@ -90,12 +114,25 @@ def calculate(population, dwellings, radius_km,
     dwelling_density = calculate_dwelling_density(dwellings, radius_km)
     total_roof_area = estimate_roof_area(dwellings, av_roof_area)
     pv_potential = estimate_solar_pv_potential(total_roof_area)
-    total_floor_area = estimate_floor_area(dwellings, dwelling_density, av_floor_area)
-    results = {'population_density': {'value': population_density, 'units': 'person/km^2'},
-            'dwelling_density': {'value': dwelling_density, 'units': 'dwelling/hectare'},
-            'solar_pv_potential': {'value': pv_potential, 'units': 'kWp'},
-            'floor_area': {'value': total_floor_area, 'units': 'm^2'}
-            }
+    total_floor_area = estimate_floor_area(dwellings, dwelling_density, 
+                                           av_floor_area)
+
+    energy_demand = compute_space_heating_demand(dwellings, population, 
+                                                 proportion_evs=0.6, 
+                                                 scenario='existing')
+
+    heat_network_energy = heat_network(energy_demand['space_heat'], energy_demand['hot_water'], radius_km)
+    results = {
+        'population_density': {'value': population_density, 'units': 'person/km^2'},
+        'dwelling_density': {'value': dwelling_density, 'units': 'dwelling/hectare'},
+        'energy_supply_solar_pv_potential': {'value': pv_potential, 'units': 'kWh'},
+        'energy_supply_heat_network_potential': {'value': heat_network_energy, 'units': 'kWh'},
+        'energy_demand_space_heat': {'value': energy_demand['space_heat'], 'units': 'kWh/year'},
+        'energy_demand_hot_water': {'value': energy_demand['hot_water'], 'units': 'kWh/year'},
+        'energy_demand_electricity': {'value': energy_demand['electricity'], 'units': 'kWh/year'},
+        'energy_demand_ev_electricity': {'value': energy_demand['ev_electricity'], 'units': 'kWh/year'},
+        'floor_area': {'value': total_floor_area, 'units': 'm^2'}
+    }
 
     if feature_geojson:
         substation_index = calculate_substation_index(centroid,
