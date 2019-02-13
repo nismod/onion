@@ -18,6 +18,11 @@ def test_parse_geojson(geojson):
                 [(-1.25934538640586, 51.6255544962863)]]
     assert actual == expected
 
+def test_parse_geojson_no_subs(geojson_no_substation):
+    actual = parse_geojson(geojson_no_substation, 'substation')
+    expected = []
+    assert actual == expected
+
 def test_calculate_substation_index(geojson):
 
     centroid = (-0.376931, 52.25207)

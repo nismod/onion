@@ -15,10 +15,11 @@ def parse_geojson(geojson, feature_type):
 
     data = gpd.GeoDataFrame.from_features(geojson)
     data = data[data['type'] == feature_type]
-
-    list_of_points = [x.coords[:] for x in data['geometry']]
-
-    return list_of_points
+    if len(data) > 0:
+        list_of_points = [x.coords[:] for x in data['geometry']]
+        return list_of_points
+    else:
+        return []
 
 def compute_inverse_distance(centroid, substation, buffer_km):
 
@@ -30,15 +31,20 @@ def compute_inverse_distance(centroid, substation, buffer_km):
 def calculate_substation_index(centroid, substation_geojson, buffer_km):
 
     list_of_substation_locations = parse_geojson(substation_geojson, 'substation')
-    
-    distances = []
-    for substation in list_of_substation_locations:
-        distance = compute_inverse_distance(centroid, substation, buffer_km)
-        distances.append(distance)
 
-    index_value = sum(distances) / len(distances)
+    if len(list_of_substation_locations) > 0:
     
-    return index_value
+        distances = []
+        for substation in list_of_substation_locations:
+            distance = compute_inverse_distance(centroid, 
+                                                substation, 
+                                                buffer_km)
+            distances.append(distance)
+
+        index_value = sum(distances) / len(distances)
+        return index_value
+    else:
+        return 0 - buffer_km
 
 def calculate_road_index(geojson):
 
