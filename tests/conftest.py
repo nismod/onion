@@ -53,7 +53,7 @@ def geojson_no_substation():
 @pytest.fixture()
 def geojson():
     data = \
-    {
+{
     "type": "FeatureCollection",
     "features": [
         {
@@ -179,24 +179,30 @@ def geojson():
         {
             "type": "Feature",
             "properties": {
+                "name": "Grim's Ditch; section 600yds (550m) long on East Ginge Down",
+                "type": "monument"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -1.35711307254206,
+                    51.5661547905162
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
                 "type": "road",
                 "roadnumber": "A34",
                 "traffic": 54439,
                 "length": 4.6
             },
             "geometry": {
-                "type": "MultiLineString",
+                "type": "Point",
                 "coordinates": [
-                    [
-                        [
-                            -1.31059706481581,
-                            51.6689864665425
-                        ],
-                        [
-                            -1.26781096387948,
-                            51.6985339675415
-                        ]
-                    ]
+                    -1.2892109818117,
+                    51.6837622099323
                 ]
             }
         },
@@ -209,18 +215,10 @@ def geojson():
                 "length": 7.1
             },
             "geometry": {
-                "type": "MultiLineString",
+                "type": "Point",
                 "coordinates": [
-                    [
-                        [
-                            -1.13794664310112,
-                            51.6300105153004
-                        ],
-                        [
-                            -1.13140405984907,
-                            51.6813305265736
-                        ]
-                    ]
+                    -1.13467728496191,
+                    51.6556706308269
                 ]
             }
         },
@@ -233,18 +231,10 @@ def geojson():
                 "length": 3.2
             },
             "geometry": {
-                "type": "MultiLineString",
+                "type": "Point",
                 "coordinates": [
-                    [
-                        [
-                            -1.30318526319598,
-                            51.6185999321814
-                        ],
-                        [
-                            -1.25803683722294,
-                            51.6148526981605
-                        ]
-                    ]
+                    -1.2806100994504,
+                    51.6167284821114
                 ]
             }
         },
@@ -257,18 +247,10 @@ def geojson():
                 "length": 4.8
             },
             "geometry": {
-                "type": "MultiLineString",
+                "type": "Point",
                 "coordinates": [
-                    [
-                        [
-                            -1.10356919925638,
-                            51.5966013607872
-                        ],
-                        [
-                            -1.13794664310112,
-                            51.6300105153004
-                        ]
-                    ]
+                    -1.1207516332245,
+                    51.613307190284
                 ]
             }
         },
@@ -281,18 +263,10 @@ def geojson():
                 "length": 6.2
             },
             "geometry": {
-                "type": "MultiLineString",
+                "type": "Point",
                 "coordinates": [
-                    [
-                        [
-                            -1.29769415515151,
-                            51.5719374629499
-                        ],
-                        [
-                            -1.30318526319598,
-                            51.6185999321814
-                        ]
-                    ]
+                    -1.30043835995313,
+                    51.5952687707253
                 ]
             }
         },
@@ -305,18 +279,10 @@ def geojson():
                 "length": 6.3
             },
             "geometry": {
-                "type": "MultiLineString",
+                "type": "Point",
                 "coordinates": [
-                    [
-                        [
-                            -1.28106464112459,
-                            51.670230120639
-                        ],
-                        [
-                            -1.20964403885468,
-                            51.656976647206
-                        ]
-                    ]
+                    -1.24534907877791,
+                    51.6636087954115
                 ]
             }
         },
@@ -329,18 +295,10 @@ def geojson():
                 "length": 2.1
             },
             "geometry": {
-                "type": "MultiLineString",
+                "type": "Point",
                 "coordinates": [
-                    [
-                        [
-                            -1.17592127762952,
-                            51.6591726282996
-                        ],
-                        [
-                            -1.19173995500197,
-                            51.6752692494828
-                        ]
-                    ]
+                    -1.18382921973757,
+                    51.6672212045913
                 ]
             }
         },
@@ -353,18 +311,10 @@ def geojson():
                 "length": 2.9
             },
             "geometry": {
-                "type": "MultiLineString",
+                "type": "Point",
                 "coordinates": [
-                    [
-                        [
-                            -1.31049389680317,
-                            51.5995272553624
-                        ],
-                        [
-                            -1.30318526319598,
-                            51.6185999321814
-                        ]
-                    ]
+                    -1.30684035471683,
+                    51.6090636612318
                 ]
             }
         },
@@ -377,18 +327,10 @@ def geojson():
                 "length": 0.3
             },
             "geometry": {
-                "type": "MultiLineString",
+                "type": "Point",
                 "coordinates": [
-                    [
-                        [
-                            -1.28197758152293,
-                            51.6728521889952
-                        ],
-                        [
-                            -1.28106464112459,
-                            51.670230120639
-                        ]
-                    ]
+                    -1.28152109832397,
+                    51.6715411557998
                 ]
             }
         },
@@ -401,18 +343,10 @@ def geojson():
                 "length": 1.8
             },
             "geometry": {
-                "type": "MultiLineString",
+                "type": "Point",
                 "coordinates": [
-                    [
-                        [
-                            -1.31059706481581,
-                            51.6689864665425
-                        ],
-                        [
-                            -1.28543294417051,
-                            51.6701488702853
-                        ]
-                    ]
+                    -1.29801515902622,
+                    51.6695683429367
                 ]
             }
         },
@@ -425,18 +359,10 @@ def geojson():
                 "length": 4.9
             },
             "geometry": {
-                "type": "MultiLineString",
+                "type": "Point",
                 "coordinates": [
-                    [
-                        [
-                            -1.19173995500197,
-                            51.6752692494828
-                        ],
-                        [
-                            -1.22487138489146,
-                            51.7134539721219
-                        ]
-                    ]
+                    -1.20829873037113,
+                    51.694362780306
                 ]
             }
         },
@@ -449,18 +375,10 @@ def geojson():
                 "length": 1
             },
             "geometry": {
-                "type": "MultiLineString",
+                "type": "Point",
                 "coordinates": [
-                    [
-                        [
-                            -1.27055101721002,
-                            51.6900991535893
-                        ],
-                        [
-                            -1.26781096387948,
-                            51.6985339675415
-                        ]
-                    ]
+                    -1.26918111978116,
+                    51.6943165705608
                 ]
             }
         },
@@ -473,18 +391,10 @@ def geojson():
                 "length": 9.2
             },
             "geometry": {
-                "type": "MultiLineString",
+                "type": "Point",
                 "coordinates": [
-                    [
-                        [
-                            -1.22783995884067,
-                            51.6070152905303
-                        ],
-                        [
-                            -1.12972742224083,
-                            51.587626761905
-                        ]
-                    ]
+                    -1.17877314103447,
+                    51.5973312387089
                 ]
             }
         },
@@ -497,18 +407,10 @@ def geojson():
                 "length": 5.8
             },
             "geometry": {
-                "type": "MultiLineString",
+                "type": "Point",
                 "coordinates": [
-                    [
-                        [
-                            -1.14706180031622,
-                            51.5406380360533
-                        ],
-                        [
-                            -1.12972742224083,
-                            51.587626761905
-                        ]
-                    ]
+                    -1.13839914671395,
+                    51.5641327865591
                 ]
             }
         },
@@ -521,18 +423,10 @@ def geojson():
                 "length": 2.5
             },
             "geometry": {
-                "type": "MultiLineString",
+                "type": "Point",
                 "coordinates": [
-                    [
-                        [
-                            -1.20964403885468,
-                            51.656976647206
-                        ],
-                        [
-                            -1.17592127762952,
-                            51.6591726282996
-                        ]
-                    ]
+                    -1.19278305240772,
+                    51.6580758499934
                 ]
             }
         },
@@ -545,18 +439,10 @@ def geojson():
                 "length": 3.4
             },
             "geometry": {
-                "type": "MultiLineString",
+                "type": "Point",
                 "coordinates": [
-                    [
-                        [
-                            -1.29769415515151,
-                            51.5719374629499
-                        ],
-                        [
-                            -1.31049389680317,
-                            51.5995272553624
-                        ]
-                    ]
+                    -1.30409210625312,
+                    51.5857325425876
                 ]
             }
         },
@@ -569,18 +455,10 @@ def geojson():
                 "length": 7.2
             },
             "geometry": {
-                "type": "MultiLineString",
+                "type": "Point",
                 "coordinates": [
-                    [
-                        [
-                            -1.41043567263547,
-                            51.5903607602834
-                        ],
-                        [
-                            -1.31049389680317,
-                            51.5995272553624
-                        ]
-                    ]
+                    -1.3604697222294,
+                    51.5949546630729
                 ]
             }
         },
@@ -593,18 +471,10 @@ def geojson():
                 "length": 5.9
             },
             "geometry": {
-                "type": "MultiLineString",
+                "type": "Point",
                 "coordinates": [
-                    [
-                        [
-                            -1.30318526319598,
-                            51.6185999321814
-                        ],
-                        [
-                            -1.31059706481581,
-                            51.6689864665425
-                        ]
-                    ]
+                    -1.30688917633811,
+                    51.6437933042357
                 ]
             }
         },
@@ -617,18 +487,10 @@ def geojson():
                 "length": 3.8
             },
             "geometry": {
-                "type": "MultiLineString",
+                "type": "Point",
                 "coordinates": [
-                    [
-                        [
-                            -1.36284412567133,
-                            51.6697759046812
-                        ],
-                        [
-                            -1.31059706481581,
-                            51.6689864665425
-                        ]
-                    ]
+                    -1.33672034162554,
+                    51.669384089834
                 ]
             }
         },
@@ -641,18 +503,10 @@ def geojson():
                 "length": 13.5
             },
             "geometry": {
-                "type": "MultiLineString",
+                "type": "Point",
                 "coordinates": [
-                    [
-                        [
-                            -1.31049389680317,
-                            51.5995272553624
-                        ],
-                        [
-                            -1.15736123969025,
-                            51.5372956161098
-                        ]
-                    ]
+                    -1.23387514581252,
+                    51.568436279247
                 ]
             }
         },
@@ -665,18 +519,10 @@ def geojson():
                 "length": 4.3
             },
             "geometry": {
-                "type": "MultiLineString",
+                "type": "Point",
                 "coordinates": [
-                    [
-                        [
-                            -1.13794664310112,
-                            51.6300105153004
-                        ],
-                        [
-                            -1.17592127762952,
-                            51.6591726282996
-                        ]
-                    ]
+                    -1.15692787879399,
+                    51.6445930974072
                 ]
             }
         },
@@ -689,18 +535,10 @@ def geojson():
                 "length": 0.3
             },
             "geometry": {
-                "type": "MultiLineString",
+                "type": "Point",
                 "coordinates": [
-                    [
-                        [
-                            -1.28543294417051,
-                            51.6701488702853
-                        ],
-                        [
-                            -1.28106464112459,
-                            51.670230120639
-                        ]
-                    ]
+                    -1.28324879440082,
+                    51.670189515777
                 ]
             }
         },
@@ -713,18 +551,10 @@ def geojson():
                 "length": 2.1
             },
             "geometry": {
-                "type": "MultiLineString",
+                "type": "Point",
                 "coordinates": [
-                    [
-                        [
-                            -1.29826497644884,
-                            51.553598176905
-                        ],
-                        [
-                            -1.29769415515151,
-                            51.5719374629499
-                        ]
-                    ]
+                    -1.29797963216915,
+                    51.5627678276496
                 ]
             }
         },
@@ -737,18 +567,10 @@ def geojson():
                 "length": 1.5
             },
             "geometry": {
-                "type": "MultiLineString",
+                "type": "Point",
                 "coordinates": [
-                    [
-                        [
-                            -1.15736123969025,
-                            51.5372956161098
-                        ],
-                        [
-                            -1.14922261884273,
-                            51.5252780221871
-                        ]
-                    ]
+                    -1.15329139732202,
+                    51.5312868903388
                 ]
             }
         },
@@ -761,18 +583,10 @@ def geojson():
                 "length": 0.1
             },
             "geometry": {
-                "type": "MultiLineString",
+                "type": "Point",
                 "coordinates": [
-                    [
-                        [
-                            -1.29769415515151,
-                            51.5719374629499
-                        ],
-                        [
-                            -1.29639842872763,
-                            51.5717498749626
-                        ]
-                    ]
+                    -1.29704629058976,
+                    51.5718436707401
                 ]
             }
         },
@@ -785,18 +599,10 @@ def geojson():
                 "length": 2.2
             },
             "geometry": {
-                "type": "MultiLineString",
+                "type": "Point",
                 "coordinates": [
-                    [
-                        [
-                            -1.28197758152293,
-                            51.6728521889952
-                        ],
-                        [
-                            -1.27055101721002,
-                            51.6900991535893
-                        ]
-                    ]
+                    -1.27626539149497,
+                    51.6814758207361
                 ]
             }
         },
@@ -809,18 +615,10 @@ def geojson():
                 "length": 0.9
             },
             "geometry": {
-                "type": "MultiLineString",
+                "type": "Point",
                 "coordinates": [
-                    [
-                        [
-                            -1.22783995884067,
-                            51.6070152905303
-                        ],
-                        [
-                            -1.22435490208312,
-                            51.6140866024406
-                        ]
-                    ]
+                    -1.22609756716941,
+                    51.610550961041
                 ]
             }
         },
@@ -833,18 +631,10 @@ def geojson():
                 "length": 3.3
             },
             "geometry": {
-                "type": "MultiLineString",
+                "type": "Point",
                 "coordinates": [
-                    [
-                        [
-                            -1.25803683722294,
-                            51.6148526981605
-                        ],
-                        [
-                            -1.22435490208312,
-                            51.6140866024406
-                        ]
-                    ]
+                    -1.24119571523403,
+                    51.6144708576188
                 ]
             }
         },
@@ -857,18 +647,10 @@ def geojson():
                 "length": 1.3
             },
             "geometry": {
-                "type": "MultiLineString",
+                "type": "Point",
                 "coordinates": [
-                    [
-                        [
-                            -1.12972742224083,
-                            51.587626761905
-                        ],
-                        [
-                            -1.11110647051378,
-                            51.5876670947644
-                        ]
-                    ]
+                    -1.12041694600567,
+                    51.5876472976218
                 ]
             }
         },
@@ -881,18 +663,10 @@ def geojson():
                 "length": 0.4
             },
             "geometry": {
-                "type": "MultiLineString",
+                "type": "Point",
                 "coordinates": [
-                    [
-                        [
-                            -1.28543294417051,
-                            51.6701488702853
-                        ],
-                        [
-                            -1.28197758152293,
-                            51.6728521889952
-                        ]
-                    ]
+                    -1.28370531434468,
+                    51.671500542698
                 ]
             }
         },
@@ -905,18 +679,10 @@ def geojson():
                 "length": 11.8
             },
             "geometry": {
-                "type": "MultiLineString",
+                "type": "Point",
                 "coordinates": [
-                    [
-                        [
-                            -1.31016478282563,
-                            51.458680651855
-                        ],
-                        [
-                            -1.29828665921033,
-                            51.553637737088
-                        ]
-                    ]
+                    -1.30423213044639,
+                    51.5061595600564
                 ]
             }
         },
@@ -929,18 +695,10 @@ def geojson():
                 "length": 8.7
             },
             "geometry": {
-                "type": "MultiLineString",
+                "type": "Point",
                 "coordinates": [
-                    [
-                        [
-                            -1.10356919925638,
-                            51.5966013607872
-                        ],
-                        [
-                            -0.989547947380133,
-                            51.5756241007487
-                        ]
-                    ]
+                    -1.04654527847476,
+                    51.5861265187696
                 ]
             }
         },
@@ -953,18 +711,10 @@ def geojson():
                 "length": 14.7
             },
             "geometry": {
-                "type": "MultiLineString",
+                "type": "Point",
                 "coordinates": [
-                    [
-                        [
-                            -0.998335099385856,
-                            51.4843434675537
-                        ],
-                        [
-                            -1.11110647051378,
-                            51.5876670947644
-                        ]
-                    ]
+                    -1.05465715207522,
+                    51.5360187312564
                 ]
             }
         },
@@ -977,18 +727,402 @@ def geojson():
                 "length": 1.1
             },
             "geometry": {
-                "type": "MultiLineString",
+                "type": "Point",
                 "coordinates": [
-                    [
-                        [
-                            -1.11110647051378,
-                            51.5876670947644
-                        ],
-                        [
-                            -1.10356919925638,
-                            51.5966013607872
-                        ]
-                    ]
+                    -1.10733820652602,
+                    51.5921342917369
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "type": "landfill",
+                "name": ""
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -1.26810891166814,
+                    51.6328804155471
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "type": "landfill",
+                "name": "National\r\nPower Plc"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -1.24367383461684,
+                    51.6754029312736
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "type": "landfill",
+                "name": ""
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -1.27581375970588,
+                    51.6734608951868
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "type": "landfill",
+                "name": "ARC Limited"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -1.31024382134045,
+                    51.6350287103914
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "type": "landfill",
+                "name": "Thames Water"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -1.17560451083803,
+                    51.6449123308464
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "type": "landfill",
+                "name": "M L Parker"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -1.24796196859382,
+                    51.6859645202037
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "type": "landfill",
+                "name": "ARC\r\nLimited"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -1.31547514340399,
+                    51.6337512701145
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "type": "landfill",
+                "name": "Oxfordshire Highways"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -1.34630491382614,
+                    51.5983703806159
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "type": "landfill",
+                "name": "H S Raynor"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -1.29176826174873,
+                    51.6262153240203
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "type": "landfill",
+                "name": "ARC Limited"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -1.26584440907651,
+                    51.6352844903224
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "type": "landfill",
+                "name": "ARC Limited"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -1.25278048046993,
+                    51.6302398847646
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "type": "landfill",
+                "name": "ARC Limited"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -1.24942904559911,
+                    51.6377549146346
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "type": "landfill",
+                "name": "Oxfordshire County Council"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -1.33775987095526,
+                    51.677427069764
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "type": "landfill",
+                "name": "Tuckwells"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -1.23307182072792,
+                    51.6820128263116
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "type": "landfill",
+                "name": "J Curtis and Sons"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -1.28698949651945,
+                    51.6571554353294
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "type": "landfill",
+                "name": "J Curtis and Sons"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -1.29202780839381,
+                    51.6505271122317
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "type": "landfill",
+                "name": "Thames Water"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -1.26584145907056,
+                    51.6491343354668
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "type": "landfill",
+                "name": "ARC Limited"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -1.16174439429281,
+                    51.657735268529
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "type": "landfill",
+                "name": "ARC"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -1.16241131301098,
+                    51.6540996801051
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "type": "landfill",
+                "name": "Mr Pratt"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -1.16627422349311,
+                    51.6503690664972
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "type": "urbanwastewater",
+                "name": "ABINGDON (OXON STW"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -1.29023400482192,
+                    51.6525458905304
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "type": "urbanwastewater",
+                "name": "BENSON, HENLEY ROA"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -1.10591156441916,
+                    51.6096569683235
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "type": "urbanwastewater",
+                "name": "CHOLSEY, CHOLSEY,"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -1.14847942810127,
+                    51.5805710109343
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "type": "urbanwastewater",
+                "name": "CULHAM, CULHAM, CL"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -1.22224255617706,
+                    51.6557120182403
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "type": "urbanwastewater",
+                "name": "DIDCOT, FOXHALL RO"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -1.25117697460096,
+                    51.6192149712736
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "type": "urbanwastewater",
+                "name": "DORCHESTER STW (OX"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -1.16329570438292,
+                    51.6382232186528
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "type": "urbanwastewater",
+                "name": "DRAYTON, DRAYTON,"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -1.30348721780704,
+                    51.6366205266501
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "type": "urbanwastewater",
+                "name": "ABINGDON STW"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -1.29023400482192,
+                    51.6525458905304
                 ]
             }
         }
