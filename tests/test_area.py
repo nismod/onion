@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import pytest
+from pytest import approx
 from onion.area import calculate
 
 __author__ = "Will Usher"
@@ -34,8 +34,8 @@ def test_substation_index(geojson):
 
     actual = calculate(population, dwellings, radius, centroid, geojson)
     expected = {
-                'value':  -112.51793429649034,
+                'value': -112.51793429649034,
                 'units': ''
                 }
 
-    assert actual['substation_index'] == expected
+    assert actual['substation_index'] == approx(expected)
