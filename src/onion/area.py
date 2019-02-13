@@ -23,8 +23,7 @@ def calculate_population_density(population, radius):
 def calculate_dwelling_density(dwellings, radius):
 
     area = pi * radius**2  # sq km
-    area_hectares = area * 100.0
-    dwelling_density = dwellings / area_hectares
+    dwelling_density = dwellings / area
     return dwelling_density
 
 def estimate_floor_area(dwellings, dwelling_density, floor_area):
@@ -57,8 +56,7 @@ def calc_heat_density(total_heat_demand, radius):
     return total_heat_demand / area
 
 
-def heat_network(space_heat, hot_water, radius):
-    total_heat_demand = space_heat + hot_water
+def heat_network(total_heat_demand, radius):
     heat_density = calc_heat_density(total_heat_demand, radius)
     if heat_density > 50:
         heat_network_capacity = total_heat_demand
@@ -66,6 +64,15 @@ def heat_network(space_heat, hot_water, radius):
         heat_network_capacity = 0
 
     return heat_network_capacity
+
+def heat_pumps(dwellings, dwelling_density):
+
+    if dwelling_density > 100:
+        return 0
+    elif dwelling_density > 50 and dwelling_density <= 100:
+        return dwellings * 1360 / 2
+    elif dwelling_density <= 50:
+        return dwellings * 1360 / 2.5
 
 
 def compute_space_heating_demand(dwellings, population, proportion_evs=0.6, scenario='existing'):
@@ -81,10 +88,14 @@ def compute_space_heating_demand(dwellings, population, proportion_evs=0.6, scen
         hot_water = dwellings * 5000  # kWh/year
         electricity = dwellings * 2700  # kWh/year    
 
+    ev_electricity = dwellings * proportion_evs * 2000
+
     return {'space_heat': heating_demand,
             'hot_water': hot_water,
             'electricity': electricity,
-            'ev_electricity': dwellings * proportion_evs * 2000}
+            'ev_electricity': ev_electricity,
+            'total_electricity': electricity + ev_electricity,
+            'total_heat': heating_demand + hot_water}
 
 
 def calculate(population, dwellings, radius_km,
@@ -118,20 +129,27 @@ def calculate(population, dwellings, radius_km,
                                            av_floor_area)
 
     energy_demand = compute_space_heating_demand(dwellings, population, 
-                                                 proportion_evs=0.6, 
+                                                 proportion_evs=0.6,
                                                  scenario='existing')
 
-    heat_network_energy = heat_network(energy_demand['space_heat'], energy_demand['hot_water'], radius_km)
+    heat_network_energy = heat_network(energy_demand['total_heat'], radius_km)
+    
+    energy_supply_shortfall_elec = energy_demand['total_electricity'] - pv_potential
+    energy_supply_shortfall_heat = energy_demand['total_heat'] - heat_network_energy
+
+
+
     results = {
-        'population_density': {'value': population_density, 'units': 'person/km^2'},
-        'dwelling_density': {'value': dwelling_density, 'units': 'dwelling/hectare'},
-        'energy_supply_solar_pv_potential': {'value': pv_potential, 'units': 'kWh'},
-        'energy_supply_heat_network_potential': {'value': heat_network_energy, 'units': 'kWh'},
-        'energy_demand_space_heat': {'value': energy_demand['space_heat'], 'units': 'kWh/year'},
-        'energy_demand_hot_water': {'value': energy_demand['hot_water'], 'units': 'kWh/year'},
-        'energy_demand_electricity': {'value': energy_demand['electricity'], 'units': 'kWh/year'},
-        'energy_demand_ev_electricity': {'value': energy_demand['ev_electricity'], 'units': 'kWh/year'},
-        'floor_area': {'value': total_floor_area, 'units': 'm^2'}
+        'population_density': {'value': round(population_density), 'units': 'person/km^2'},
+        'dwelling_density': {'value': round(dwelling_density), 'units': 'dwelling/hectare'},
+        'energy_supply_solar_pv_potential': {'value': round(pv_potential, 2), 'units': 'kWh'},
+        'energy_supply_heat_network_potential': {'value': round(heat_network_energy, 2), 'units': 'kWh'},
+        'energy_supply_heat_pump_potential': {'value': round(heat_pumps(dwellings, dwelling_density), 2), 'units': 'kWh'},
+        'energy_demand_space_heat': {'value': round(energy_demand['space_heat'], 2), 'units': 'kWh/year'},
+        'energy_demand_hot_water': {'value': round(energy_demand['hot_water'], 2), 'units': 'kWh/year'},
+        'energy_demand_electricity': {'value': round(energy_demand['electricity'], 2), 'units': 'kWh/year'},
+        'energy_demand_ev_electricity': {'value': round(energy_demand['ev_electricity'], 2), 'units': 'kWh/year'},
+        'total_floor_area': {'value': round(total_floor_area), 'units': 'm^2'}
     }
 
     if feature_geojson:

@@ -17,7 +17,7 @@ def test_population_density():
 
     actual = calculate(population, dwellings, radius, None, None)
     expected = {
-                'value': 3183.0988618379065,
+                'value': 3183,
                 'units': 'person/km^2'
                 }
 
