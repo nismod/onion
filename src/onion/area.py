@@ -7,7 +7,7 @@ import argparse
 import sys
 from math import pi
 
-from .indices import calculate_substation_index
+from .indices import calculate_substation_index, calculate_road_index
 
 __author__ = "Will Usher"
 __copyright__ = "Will Usher"
@@ -64,7 +64,7 @@ def compute_heating_demand(population, dwellings):
 
 
 def calculate(population, dwellings, radius_km,
-              centroid, substation_geojson):
+              centroid, feature_geojson):
     """
 
     Arguments
@@ -77,7 +77,7 @@ def calculate(population, dwellings, radius_km,
         The radius in kilometres of the city circle
     centroid : tuple of int
         The lon/lat pair for the centre of the city circle
-    substation_geojson : dict
+    feature_geojson : dict
         A geojson dict of substation data
     """
 
@@ -97,9 +97,15 @@ def calculate(population, dwellings, radius_km,
             'floor_area': {'value': total_floor_area, 'units': 'm^2'}
             }
 
-    if substation_geojson:
-        substation_index = calculate_substation_index(centroid, substation_geojson, radius_km)
+    if feature_geojson:
+        substation_index = calculate_substation_index(centroid,
+                                                      feature_geojson,
+                                                      radius_km)
         results['substation_index'] = {'value': substation_index, 'units': ""}
+
+        road_index = calculate_road_index(feature_geojson)
+        results['congestion_index'] = {'value': road_index,
+                                       'units': ''}
 
     return results
 

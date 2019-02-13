@@ -1,4 +1,5 @@
-from onion.indices import compute_inverse_distance, parse_geojson, calculate_substation_index
+from onion.indices import (compute_inverse_distance, parse_geojson, 
+                           calculate_substation_index, calculate_road_index)
 
 def test_compute_substation_distance():
 
@@ -11,7 +12,7 @@ def test_compute_substation_distance():
     assert actual == expected
 
 def test_parse_geojson(geojson):
-    actual = parse_geojson(geojson)
+    actual = parse_geojson(geojson, 'substation')
     expected = [[(-1.16028744986759, 51.5351050684567)],
                 [(-1.22835338989177, 51.6611686319984)],
                 [(-1.25934538640586, 51.6255544962863)]]
@@ -26,3 +27,8 @@ def test_calculate_substation_index(geojson):
     expected = -17.517934296490335
     assert actual == expected
 
+def test_road_confestion(geojson):
+
+    actual = calculate_road_index(geojson)
+    expected = 0.7399550355519291
+    assert actual == expected
