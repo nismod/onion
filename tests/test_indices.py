@@ -12,7 +12,7 @@ def test_compute_substation_distance():
     actual = compute_inverse_distance(centroid, substation, buffer_km)
     expected = -1565.1090992067398
 
-    assert actual == expected
+    assert actual == approx(expected)
 
 def test_parse_geojson(geojson):
     actual = parse_geojson(geojson, 'substation')
