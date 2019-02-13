@@ -65,6 +65,21 @@ def compute_heating_demand(population, dwellings):
 
 def calculate(population, dwellings, radius_km,
               centroid, substation_geojson):
+    """
+
+    Arguments
+    ---------
+    population : int
+        The population count of the city circle
+    dwellings : int
+        The dwelling count of the city circle
+    radius_km : int
+        The radius in kilometres of the city circle
+    centroid : tuple of int
+        The lon/lat pair for the centre of the city circle
+    substation_geojson : dict
+        A geojson dict of substation data
+    """
 
     results = {}
 
